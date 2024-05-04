@@ -6,6 +6,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
   imports: [
     NoteModule,
     ThrottlerModule.forRoot({
+      //@ts-ignore
       ttl: 60000, // time to live for the records in seconds
       limit: 10, // maximum number of requests within TTL
     }),
