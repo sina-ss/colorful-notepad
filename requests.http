@@ -1,13 +1,31 @@
-### List of all messages
-GET http://localhost:3000/
+### Create a new note
+POST http://localhost:3000/notes
+Content-Type: application/json
 
-### Get a specific message
-GET http://localhost:3000/:id
-
-### Create a new message
-POST http://localhost:3000/
-content-type: application/json
- 
 {
-    "message": "Hello World"
+  "from": "John",
+  "to": "Jane",
+  "message": "Hello, Jane!",
+  "color": "#FF0000"
 }
+
+### Get all notes
+GET http://localhost:3000/notes
+
+### Get notes with pagination
+GET http://localhost:3000/notes?skip=0&take=10
+
+### Get a note by ID
+GET http://localhost:3000/notes/1
+
+### Update a note by ID
+PUT http://localhost:3000/notes/1
+Content-Type: application/json
+
+{
+  "message": "Updated message",
+  "color": "#00FF00"
+}
+
+### Delete a note by ID
+DELETE http://localhost:3000/notes/1
