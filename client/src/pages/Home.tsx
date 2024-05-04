@@ -1,10 +1,10 @@
-import NoteBook from "@/components/NoteBook";
+import Note from "@/components/Note";
 import SearchTextField from "@/components/ui/SearchTextField";
 import { Box, Grid, Typography } from "@mui/material";
 
 const Home = () => {
   return (
-    <Box display="flex" flexDirection="column" alignItems="center" mt={4}>
+    <Box display="flex" flexDirection="column" alignItems="center" my={4}>
       <Typography variant="h1" fontWeight="Bold" gutterBottom>
         IOU
       </Typography>
@@ -36,19 +36,28 @@ const Home = () => {
         mt={5}
       >
         <Grid item xs={12} md={4} xl={3} display="flex" justifyContent="center">
-          <NoteBook text="H" color="#A2A2A2" />
+          <Note to="Sina" message="Hiasfasfs" color="#6B6B6B"/>
         </Grid>
         <Grid item xs={12} md={4} xl={3} display="flex" justifyContent="center">
-          <NoteBook text="Hia" color="#6B6B6B" />
+          <Note to="Sina" message="Hiasfasfs" color="#6B6B6B"/>
         </Grid>
         <Grid item xs={12} md={4} xl={3} display="flex" justifyContent="center">
-          <NoteBook text="Hiasf" color="#000000" />
+          <Note to="Sina" message="Hiasfasfs" color="#6B6B6B"/>
         </Grid>
         <Grid item xs={12} md={4} xl={3} display="flex" justifyContent="center">
-          <NoteBook text="Hiasfas" color="#FDA44B" />
+          <Note to="Sina" message="Hiasfasfs" color="#6B6B6B"/>
         </Grid>
         <Grid item xs={12} md={4} xl={3} display="flex" justifyContent="center">
-          <NoteBook text="Hiasfasfs" color="#FEFE7B" />
+          <Note to="Sina" message="Hiasfasfs" color="#6B6B6B"/>
+        </Grid>
+        <Grid item xs={12} md={4} xl={3} display="flex" justifyContent="center">
+          <Note to="Sina" message="Hiasfasfs" color="#6B6B6B"/>
+        </Grid>
+        <Grid item xs={12} md={4} xl={3} display="flex" justifyContent="center">
+          <Note to="Sina" message="Hiasfasfs" color="#6B6B6B"/>
+        </Grid>
+        <Grid item xs={12} md={4} xl={3} display="flex" justifyContent="center">
+          <Note to="Sina" message="Hiasfasfs" color="#6B6B6B"/>
         </Grid>
       </Grid>
     </Box>
