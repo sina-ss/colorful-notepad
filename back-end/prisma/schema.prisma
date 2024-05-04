@@ -1,0 +1,17 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Note {
+  id        Int      @id @default(autoincrement())
+  from      String?
+  to        String   @db.VarChar(12)
+  message   String
+  color     String   @default("#A377FB")
+  createdAt DateTime @default(now())
+}
