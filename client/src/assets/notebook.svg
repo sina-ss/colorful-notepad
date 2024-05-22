@@ -5,9 +5,9 @@
 <path d="M30.4979 149.197C34.7184 149.197 38.0232 145.7 38.0232 141.532C38.0232 137.364 34.7184 133.866 30.4979 133.866C26.2775 133.866 22.9727 137.364 22.9727 141.532C22.9727 145.7 26.2775 149.197 30.4979 149.197Z" fill="white" stroke="black" stroke-width="5"/>
 <path d="M30.4979 197.546C34.7184 197.546 38.0232 194.049 38.0232 189.88C38.0232 185.712 34.7184 182.215 30.4979 182.215C26.2775 182.215 22.9727 185.712 22.9727 189.88C22.9727 194.049 26.2775 197.546 30.4979 197.546Z" fill="white" stroke="black" stroke-width="5"/>
 <path d="M30.4979 245.894C34.7184 245.894 38.0232 242.397 38.0232 238.229C38.0232 234.061 34.7184 230.563 30.4979 230.563C26.2775 230.563 22.9727 234.061 22.9727 238.229C22.9727 242.397 26.2775 245.894 30.4979 245.894Z" fill="white" stroke="black" stroke-width="5"/>
-<path d="M7 141.647L30 141.647" stroke="black" stroke-width="5" stroke-linecap="round"/>
-<path d="M7 190.526L30 190.526" stroke="black" stroke-width="5" stroke-linecap="round"/>
-<path d="M7 238.406L30 238.406" stroke="black" stroke-width="5" stroke-linecap="round"/>
+<path d="M7 141.647L30 141.647" stroke="black" stroke-width="5" strokeLinecap="round"/>
+<path d="M7 190.526L30 190.526" stroke="black" stroke-width="5" strokeLinecap="round"/>
+<path d="M7 238.406L30 238.406" stroke="black" stroke-width="5" strokeLinecap="round"/>
 </g>
 <g filter="url(#filter1_d_1_618)">
 <rect width="93" height="42" transform="translate(231 63)" fill="white"/>

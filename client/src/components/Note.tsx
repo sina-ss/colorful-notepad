@@ -7,6 +7,16 @@ interface NoteProps {
   color: string;
 }
 
+const BlackColors = [
+  "#000000",
+  "#A377FB",
+  "#F81C1C",
+  "#5F3441",
+  "#1227FC",
+  "#711BCF",
+  "#A27040",
+];
+
 const Note: React.FC<NoteProps> = ({ to, message, color }) => {
   return (
     <Box
@@ -46,7 +56,7 @@ const Note: React.FC<NoteProps> = ({ to, message, color }) => {
       </Box>
       <Typography
         variant="body1"
-        color="#FFF"
+        color={BlackColors.includes(color) ? "#FFF" : "#000"}
         sx={{
           display: "-webkit-box",
           WebkitLineClamp: 4,
@@ -58,20 +68,20 @@ const Note: React.FC<NoteProps> = ({ to, message, color }) => {
       >
         {message}
       </Typography>
-      <Box display="flex" flexDirection="column" gap="1.2rem" position="absolute" left="-.4rem">
-        <SvgIcon
-          sx={{ overflow: "visible" }}
-        >
+      <Box
+        display="flex"
+        flexDirection="column"
+        gap="1.2rem"
+        position="absolute"
+        left="-.4rem"
+      >
+        <SvgIcon sx={{ overflow: "visible" }}>
           <DotsIcon />
         </SvgIcon>
-        <SvgIcon
-          sx={{ overflow: "visible" }}
-        >
+        <SvgIcon sx={{ overflow: "visible" }}>
           <DotsIcon />
         </SvgIcon>
-        <SvgIcon
-          sx={{ overflow: "visible" }}
-        >
+        <SvgIcon sx={{ overflow: "visible" }}>
           <DotsIcon />
         </SvgIcon>
       </Box>

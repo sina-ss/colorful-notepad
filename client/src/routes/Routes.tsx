@@ -3,6 +3,7 @@ import Layout from "@/layout/Layout";
 import AboutUs from "@/pages/AboutUs";
 import Home from "@/pages/Home";
 import Terms from "@/pages/Terms";
+import Submit from "@/pages/Submit";
 
 export const routes = createBrowserRouter([{
     path: "/",
@@ -19,6 +20,11 @@ export const routes = createBrowserRouter([{
         {
             path: "/terms",
             element: <Terms />
+        },
+        {
+            path: "/submit",
+            element: <Submit />
         }
+        
     ]
 }]);
