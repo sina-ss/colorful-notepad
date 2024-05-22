@@ -1,5 +1,5 @@
+import IOULink from "@/components/IOULink";
 import { Box, Typography } from "@mui/material";
-import { FaInstagram } from "react-icons/fa6";
 
 const AboutUs = () => {
   return (
@@ -29,12 +29,7 @@ const AboutUs = () => {
         unique. Join us in the colourful journey of expressing what truly
         matters, where every shade tells a story. 💬🎨 #ShareYourUnsent
       </Typography>
-      <Box display="flex" alignItems="center" justifyContent="center" gap={2} mt={24}>
-        <Typography component="span" variant="body1" fontWeight={600}>
-          #IOUPROJECT
-        </Typography>
-        <FaInstagram size={20} />
-      </Box>
+      <IOULink />
     </Box>
   );
 };

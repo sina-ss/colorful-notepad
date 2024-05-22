@@ -14,11 +14,11 @@ import SmallNote from "@/components/SmallNote";
 import logoIcon from "@/assets/logo.svg";
 import { colors } from "@/constants/color";
 import { Link } from "react-router-dom";
-import InstagramIcon from "@/components/InstagramIcon";
 import { createNote } from "@/api/note";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CustomInput from "@/components/ui/CustomInput";
+import IOULink from "@/components/IOULink";
 
 const Submit = () => {
   const [noteData, setNoteData] = useState({
@@ -259,19 +259,7 @@ const Submit = () => {
           terms of the submission
         </Button>
       </Typography>
-      <Button
-        component={Link}
-        to="/terms"
-        variant="text"
-        sx={{ mt: "4.87rem", mb: 2 }}
-        endIcon={
-          <SvgIcon>
-            <InstagramIcon />
-          </SvgIcon>
-        }
-      >
-        #IOUPROJECT
-      </Button>
+      <IOULink />
     </Box>
   );
 };
