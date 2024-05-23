@@ -33,7 +33,7 @@ const Home = () => {
       justifyContent="center"
       key={note.id}
     >
-      <Note to={note.to} message={note.message} color={note.color} from={note.from || ""} />
+      <Note to={note.to} message={note.message} color={note.color} from={note.from || ""} createdAt={note.createdAt}/>
     </Grid>
   );
 

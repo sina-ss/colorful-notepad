@@ -10,6 +10,7 @@ interface OpenedNoteBookProps {
   from?: string;
   message: string;
   color: string;
+  createdAt: string;
 }
 
 const flipAndMoveLeftPage = keyframes`
@@ -35,8 +36,14 @@ const OpenedNoteBook: React.FC<OpenedNoteBookProps> = ({
   from = "",
   message,
   color,
+  createdAt,
 }) => {
   const [showElements, setShowElements] = useState(false);
+  const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -75,9 +82,23 @@ const OpenedNoteBook: React.FC<OpenedNoteBookProps> = ({
         onAnimationEnd={() => setShowElements(true)}
       >
         {showElements && (
-          <div style={{ transform: "rotateY(-180deg)" }}>
-            <LargeLogo />
-          </div>
+          <>
+            <div style={{ transform: "rotateY(-180deg)" }}>
+              <LargeLogo />
+            </div>
+            <Typography
+              textAlign="center"
+              variant="body1"
+              color="#000"
+              sx={{
+                position: "absolute",
+                bottom: "2.5rem",
+                transform: "rotateY(-180deg)",
+              }}
+            >
+              Posted on {formattedDate}
+            </Typography>
+          </>
         )}
       </Box>
       {showElements && (

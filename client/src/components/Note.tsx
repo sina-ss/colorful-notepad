@@ -9,6 +9,7 @@ interface NoteProps {
   message: string;
   color: string;
   from?: string;
+  createdAt: string;
 }
 
 const StyledBackdrop = styled("div")(({}) => ({
@@ -20,7 +21,7 @@ const StyledBackdrop = styled("div")(({}) => ({
   left: 0,
 }));
 
-const Note: React.FC<NoteProps> = ({ to, message, from="", color }) => {
+const Note: React.FC<NoteProps> = ({ to, message, from="", color, createdAt }) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -115,7 +116,7 @@ const Note: React.FC<NoteProps> = ({ to, message, from="", color }) => {
           backdrop: StyledBackdrop,
         }}
       >
-        <OpenedNoteBook color={color} to={to} message={message} from={from}/>
+        <OpenedNoteBook color={color} to={to} message={message} from={from} createdAt={createdAt}/>
       </Dialog>
     </>
   );
