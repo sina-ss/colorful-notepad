@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import Connector from "@/components/Connector";
-import LargeLogo from "@/components/LargeLogo";
+import LargeLogo from "@/components/icons/LargeLogo";
 import SmallNote from "@/components/SmallNote";
 import logoIcon from "@/assets/logo.svg";
 import { colors } from "@/constants/color";

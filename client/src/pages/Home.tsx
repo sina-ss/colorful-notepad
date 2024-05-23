@@ -33,7 +33,7 @@ const Home = () => {
       justifyContent="center"
       key={note.id}
     >
-      <Note to={note.to} message={note.message} color={note.color} />
+      <Note to={note.to} message={note.message} color={note.color} from={note.from || ""} />
     </Grid>
   );
 
@@ -42,11 +42,11 @@ const Home = () => {
       <Typography variant="h1" fontWeight="Bold" gutterBottom>
         IOU
       </Typography>
-      <Typography variant="body1">
+      <Typography variant="body1" textAlign="center">
         A platform for expressing what's often left unsaid, share the unspoken
         words of gratitude and affection
       </Typography>
-      <Typography variant="body1">
+      <Typography variant="body1" textAlign="center">
         "I Owe You connects hearts through unsent words
       </Typography>
       <Typography variant="body1" color="text.secondary" mt={3}>

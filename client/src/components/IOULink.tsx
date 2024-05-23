@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import InstagramIcon from "./InstagramIcon";
+import InstagramIcon from "./icons/InstagramIcon";
 
 const IOULink = () => {
   return (

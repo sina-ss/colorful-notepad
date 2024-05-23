@@ -30,3 +30,13 @@ export const colors = [
   "#FEA6FD",
   "#F978D1",
 ];
+
+export const BlackColors = [
+  "#000000",
+  "#A377FB",
+  "#F81C1C",
+  "#5F3441",
+  "#1227FC",
+  "#711BCF",
+  "#A27040",
+];
