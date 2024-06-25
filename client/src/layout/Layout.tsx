@@ -55,13 +55,14 @@ const Layout = () => {
         ))}
         <Divider sx={{ width: "80%", mx: "auto" }} />
         <ListItem>
-          <PrimaryButton
-            variant="outlined"
-            sx={{ fontWeight: "medium", mx: "auto", mt: 1}}
-            href="/submit"
-          >
-            Submit
-          </PrimaryButton>
+          <Link to="/submit" style={{ marginInline: "auto" }}>
+            <PrimaryButton
+              variant="outlined"
+              sx={{ fontWeight: "medium", mt: 1 }}
+            >
+              Submit
+            </PrimaryButton>
+          </Link>
         </ListItem>
       </List>
     </Box>
@@ -116,20 +117,21 @@ const Layout = () => {
             Terms and Conditions
           </NavLink>
         </Box>
-        <PrimaryButton
-          variant="outlined"
-          sx={{ fontWeight: "medium", display: { xs: "none", md: "block" } }}
-          href="/submit"
-        >
-          Submit
-        </PrimaryButton>
+        <Link to="/submit" style={{textDecoration: "none"}}>
+          <PrimaryButton
+            variant="outlined"
+            sx={{ fontWeight: "medium", display: { xs: "none", md: "block" } }}
+          >
+            Submit
+          </PrimaryButton>
+        </Link>
         <IconButton
           sx={{ display: { xs: "block", md: "none" } }}
           onClick={toggleDrawer(true)}
         >
           <IoMenu />
         </IconButton>
-        <Drawer open={open} onClose={toggleDrawer(false)}>
+        <Drawer open={open} anchor="left" onClose={toggleDrawer(false)}>
           {DrawerList}
         </Drawer>
       </Box>

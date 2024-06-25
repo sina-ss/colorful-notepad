@@ -134,8 +134,8 @@ const OpenedNoteBook: React.FC<OpenedNoteBookProps> = ({
         </Box>
       )}
       <Box
-        width={{xs: "25rem", md: "30.1875rem"}}
-        height="37.5rem"
+        width={{xs: "22rem", md: "30.1875rem"}}
+        height={{xs: "30rem",md: "37.5rem"}}
         borderRadius={{ xs: "2rem", md: "0rem 3.125rem 3.125rem 0rem" }}
         bgcolor={color} // Set the selected color
         position={{ md: "relative" }}
