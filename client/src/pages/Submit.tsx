@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import {
   Box,
   Button,
+  Checkbox,
+  FormControlLabel,
   Grid,
   Input,
   Stack,
@@ -19,6 +21,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CustomInput from "@/components/ui/CustomInput";
 import IOULink from "@/components/IOULink";
+import { PiWarningCircleFill } from "react-icons/pi";
 
 const Submit = () => {
   const [noteData, setNoteData] = useState({
@@ -34,6 +37,8 @@ const Submit = () => {
     from: "",
   });
 
+  const [isAgreed, setIsAgreed] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setNoteData((prevState) => ({ ...prevState, [name]: value }));
@@ -41,6 +46,10 @@ const Submit = () => {
 
   const handleColorChange = (color: string) => {
     setNoteData((prevState) => ({ ...prevState, color }));
+  };
+
+  const handleAgreementChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsAgreed(e.target.checked);
   };
 
   const validate = () => {
@@ -67,6 +76,10 @@ const Submit = () => {
   };
 
   const handleSubmit = async () => {
+    if (!isAgreed) {
+      toast.error("You must agree to the terms of the submission.");
+      return;
+    }
     if (!validate()) {
       toast.error("Please correct the errors in the form.");
       return;
@@ -79,14 +92,13 @@ const Submit = () => {
       // Reset form fields
       setNoteData({ to: "", from: "", message: "", color: "#A377FB" });
     } catch (error) {
-      console.error("Error submitting note:", error);
       toast.error("Failed to create note.");
     }
   };
 
   return (
     <Box
-      mt="6.19rem"
+      mt={{ xs: "1rem", md: "6.19rem" }}
       display="flex"
       flexDirection="column"
       justifyContent="center"
@@ -94,26 +106,49 @@ const Submit = () => {
       width="100%"
     >
       <ToastContainer />
-      <Typography fontWeight={700} variant="h1" textAlign="center" gutterBottom>
+      <Typography
+        fontWeight={700}
+        display={{ xs: "none", md: "block" }}
+        variant="h1"
+        textAlign="center"
+        gutterBottom
+      >
         Write a note
       </Typography>
-      <Box maxWidth="62.5rem" position="relative" display="flex" gap="1.5rem">
+      <Typography
+        fontWeight={700}
+        display={{ xs: "block", md: "none" }}
+        variant="h3"
+        component="h1"
+        textAlign="center"
+        gutterBottom
+      >
+        Write a note
+      </Typography>
+      <Box
+        maxWidth="62.5rem"
+        position="relative"
+        display="flex"
+        flexDirection={{ xs: "column", md: "row" }}
+        gap="1.5rem"
+      >
         <Box
           display="flex"
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
-          width="30.1875rem"
-          height="37.5rem"
-          borderRadius="3.125rem 0 0 3.125rem"
+          width={{ xs: "95%", md: "30.1875rem" }}
+          height={{ xs: "30rem", md: "37.5rem" }}
+          borderRadius={{ xs: "2rem", md: "3.125rem 0 0 3.125rem" }}
           bgcolor="#FFF"
-          px="5.5rem"
+          px={{ xs: "2rem", md: "5.5rem" }}
+          mx={{ xs: "auto", md: 0 }}
           sx={{ filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.60))" }}
         >
           <LargeLogo />
           <Grid container columnSpacing=".63rem" rowSpacing=".5rem">
             {colors.map((color, index) => (
-              <Grid item xs={2} key={index}>
+              <Grid item xs={2.4} md={2} key={index}>
                 <Box
                   onClick={() => handleColorChange(color)}
                   sx={{ cursor: "pointer" }}
@@ -127,7 +162,7 @@ const Submit = () => {
         <Box
           position="absolute"
           height="100%"
-          display="flex"
+          display={{ xs: "none", md: "flex" }}
           flexDirection="column"
           gap="2rem"
           alignItems="center"
@@ -146,11 +181,12 @@ const Submit = () => {
           </SvgIcon>
         </Box>
         <Box
-          width="30.1875rem"
-          height="37.5rem"
-          borderRadius="0rem 3.125rem 3.125rem 0rem"
+          width={{ xs: "95%", md: "30.1875rem" }}
+          height={{ xs: "30rem", md: "37.5rem" }}
+          borderRadius={{ xs: "2rem", md: "0rem 3.125rem 3.125rem 0rem" }}
           bgcolor={noteData.color} // Set the selected color
           position="relative"
+          mx={{ xs: "auto", md: 0 }}
           sx={{ filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.60))" }}
         >
           <Stack
@@ -175,11 +211,6 @@ const Submit = () => {
             </Typography>
             <img src={logoIcon} />
           </Stack>
-          {errors.to && (
-            <Typography color="error" variant="caption">
-              {errors.to}
-            </Typography>
-          )}
           <Input
             multiline
             fullWidth
@@ -187,7 +218,7 @@ const Submit = () => {
               mt: "2.25rem",
               px: "3rem",
               color: "#B4B4B4",
-              fontSize: "2rem",
+              fontSize: { xs: "1.25rem", md: "2rem" },
               fontWeight: 600,
             }}
             placeholder="Write your note here..."
@@ -196,11 +227,6 @@ const Submit = () => {
             onChange={handleChange}
             disableUnderline
           />
-          {errors.message && (
-            <Typography color="error" variant="caption">
-              {errors.message}
-            </Typography>
-          )}
           <Stack
             direction="row"
             justifyContent="space-between"
@@ -229,15 +255,38 @@ const Submit = () => {
                 onChange={handleChange}
                 isWhite={noteData.color === "#FFFFFF"}
               />
-              {errors.from && (
-                <Typography color="error" variant="caption">
-                  {errors.from}
-                </Typography>
-              )}
             </Typography>
           </Stack>
         </Box>
       </Box>
+      {(errors.to + errors.from + errors.message) && (
+        <Box
+          borderRadius="0.625rem"
+          padding="1.5rem 2.8125rem"
+          bgcolor="#FECACA"
+          mt={2}
+        >
+          <Typography color="error">
+            <PiWarningCircleFill color="error" /> There were errors with your
+            submission
+          </Typography>
+          {errors.to && (
+            <Typography color="error" component="p" variant="caption" sx={{ pl: 3 }}>
+              {errors.to}
+            </Typography>
+          )}
+          {errors.from && (
+            <Typography color="error" component="p" variant="caption" sx={{ pl: 3 }}>
+              {errors.from}
+            </Typography>
+          )}
+          {errors.message && (
+            <Typography color="error" component="p" variant="caption" sx={{ pl: 3 }}>
+              {errors.message}
+            </Typography>
+          )}
+        </Box>
+      )}
       <Button
         fullWidth
         variant="outlined"
@@ -250,15 +299,30 @@ const Submit = () => {
           maxWidth: "62.5rem",
         }}
         onClick={handleSubmit}
+        disabled={!isAgreed}
       >
         Submit your note
       </Button>
-      <Typography textAlign="center" sx={{ mt: "1.69rem" }}>
-        I agree to the
-        <Button component={Link} to="/terms" sx={{ color: "#1227FC" }}>
-          terms of the submission
-        </Button>
-      </Typography>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        mt="1.69rem"
+      >
+        <FormControlLabel
+          control={
+            <Checkbox checked={isAgreed} onChange={handleAgreementChange} />
+          }
+          label={
+            <Typography textAlign="center">
+              I agree to the{" "}
+              <Button component={Link} to="/terms" sx={{ color: "#1227FC" }}>
+                terms of the submission
+              </Button>
+            </Typography>
+          }
+        />
+      </Box>
       <IOULink />
     </Box>
   );

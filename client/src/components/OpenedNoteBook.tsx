@@ -31,6 +31,15 @@ const returnRightPage = keyframes`
   }
 `;
 
+const returnToCenter = keyframes`
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
+
 const OpenedNoteBook: React.FC<OpenedNoteBookProps> = ({
   to,
   from = "",
@@ -39,10 +48,10 @@ const OpenedNoteBook: React.FC<OpenedNoteBookProps> = ({
   createdAt,
 }) => {
   const [showElements, setShowElements] = useState(false);
-  const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
+  const formattedDate = new Date(createdAt).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
   });
 
   useEffect(() => {
@@ -62,7 +71,7 @@ const OpenedNoteBook: React.FC<OpenedNoteBookProps> = ({
       sx={{ perspective: "1000px" }}
     >
       <Box
-        display="flex"
+        display={{ xs: "none", md: "flex" }}
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
@@ -105,7 +114,7 @@ const OpenedNoteBook: React.FC<OpenedNoteBookProps> = ({
         <Box
           position="absolute"
           height="100%"
-          display="flex"
+          display={{ xs: "none", md: "flex" }}
           flexDirection="column"
           gap="2rem"
           alignItems="center"
@@ -125,16 +134,16 @@ const OpenedNoteBook: React.FC<OpenedNoteBookProps> = ({
         </Box>
       )}
       <Box
-        width="30.1875rem"
+        width={{xs: "25rem", md: "30.1875rem"}}
         height="37.5rem"
-        borderRadius="0rem 3.125rem 3.125rem 0rem"
+        borderRadius={{ xs: "2rem", md: "0rem 3.125rem 3.125rem 0rem" }}
         bgcolor={color} // Set the selected color
-        position="relative"
+        position={{ md: "relative" }}
         left=".75rem"
         sx={{
           filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.60))",
-          transformOrigin: "right",
-          animation: `${returnRightPage} 1.5s ease forwards`,
+          transformOrigin: { xs: "none", md: "right" },
+          animation: { xs:`${returnToCenter} 1.5s ease forwards`,md: `${returnRightPage} 1.5s ease forwards`},
           zIndex: 0,
         }}
       >
@@ -195,6 +204,19 @@ const OpenedNoteBook: React.FC<OpenedNoteBookProps> = ({
             {from !== "" ? `From: ${from}` : ""}
           </Typography>
         </Stack>
+        <Typography
+          textAlign="center"
+          variant="body1"
+          color="#000"
+          sx={{
+            display: { xs: "block", md: "none" },
+            position: "absolute",
+            bottom: ".75rem",
+            width: "100%",
+          }}
+        >
+          Posted on {formattedDate}
+        </Typography>
       </Box>
       {showElements && (
         <Box

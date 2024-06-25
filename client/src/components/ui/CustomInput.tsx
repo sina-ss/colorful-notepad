@@ -56,7 +56,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
         display: "inline-flex",
         alignItems: "center",
         backgroundColor: "transparent",
-        width: "8rem",
+        width: {xs: "6rem", md: "8rem"},
       }}
     >
       {!isFocused && <BlinkingCursor isWhite={isWhite} />}
